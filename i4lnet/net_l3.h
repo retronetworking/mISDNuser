@@ -134,6 +134,7 @@ typedef struct _NOTIFY {
 	u_char *BEARER;
 	u_char *NOTIFY;
 	u_char *DISPLAY;
+	u_char *REDIR_DN;
 } NOTIFY_t;
 
 typedef struct _PROGRESS {
