@@ -1985,6 +1985,14 @@ machen
 	 CC_T308, l3dss1_t308},
 	{ALL_STATES,
 	 CC_T312, l3dss1_t312},
+	{SBIT(3) | SBIT(4) | SBIT(10) | SBIT(12),
+	 CC_HOLD_ACKNOWLEDGE | REQUEST, l3dss1_holdack_req},
+	{SBIT(3) | SBIT(4) | SBIT(10) | SBIT(12),
+	 CC_HOLD_REJECT | REQUEST, l3dss1_holdrej_req},
+	{SBIT(3) | SBIT(4) | SBIT(10) | SBIT(12),
+	 CC_RETRIEVE_ACKNOWLEDGE | REQUEST, l3dss1_retrack_req},
+	{SBIT(3) | SBIT(4) | SBIT(10) | SBIT(12),
+	 CC_RETRIEVE_REJECT | REQUEST, l3dss1_retrrej_req},
 };
 
 #define DOWNSLLEN \
