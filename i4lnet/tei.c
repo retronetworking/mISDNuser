@@ -346,7 +346,7 @@ tei_mux(net_stack_t *nst, msg_t *msg)
 			hh->prim);
 		return(-EINVAL);
 	}
-	msg_pull(msg, mISDN_HEAD_SIZE);
+	msg_pull(msg, mISDN_HEADER_LEN);
 	if (msg->len < 8) {
 		wprint("short tei mgr frame %d/8\n", msg->len);
 		return(-EINVAL);
