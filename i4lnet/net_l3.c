@@ -1876,6 +1876,7 @@ l3dss1_retrack_req(layer3_proc_t *pc, int pr, void *arg)
 
 	if (pc->hold_state != HOLDAUX_RETR_IND)
 		return;
+	pc->hold_state = HOLDAUX_IDLE;
 	if (rack) {
 		MsgStart(pc, MT_RETRIEVE_ACKNOWLEDGE);
 		if (rack->CHANNEL_ID)
