@@ -30,7 +30,7 @@ struct _layer3_proc {
 	int		ces;
 	int		selces;
 	int		state;
-	int		Flags;
+	u_long		Flags;
 	L3Timer_t	timer1;
 	L3Timer_t	timer2;
 	int		bc;
