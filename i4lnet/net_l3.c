@@ -689,6 +689,7 @@ l3dss1_setup(layer3_proc_t *pc, int pr, void *arg)
 		find_and_copy_ie(msg->data, msg->len, IE_HLC, 0, umsg);
 	setup->USER_USER =
 		find_and_copy_ie(msg->data, msg->len, IE_USER_USER, 0, umsg);
+	setup->ces = pc->ces;
 	newl3state(pc, 1);
 	L3DelTimer(&pc->timer2);
 	L3AddTimer(&pc->timer2, T_CTRL, 0x31f);
@@ -1032,6 +1033,7 @@ l3dss1_connect_i(layer3_proc_t *pc, int pr, void *arg)
 		find_and_copy_ie(msg->data, msg->len, IE_LLC, 0, umsg);
 	conn->USER_USER =
 		find_and_copy_ie(msg->data, msg->len, IE_USER_USER, 0, umsg);
+	conn->ces = pc->ces;
 	if (send_proc(pc, IMSG_CONNECT_IND, umsg))
 		free_msg(umsg); 
 }
