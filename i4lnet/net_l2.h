@@ -17,6 +17,8 @@
 #include "memdbg.h"
 #endif
 
+#define DINFO_SKB       -1
+
 #define MAX_WINDOW	8
 
 typedef struct _teimgr {
