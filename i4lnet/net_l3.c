@@ -2595,7 +2595,7 @@ dl_data_mux(layer3_t *l3, mISDNuser_head_t *hh, msg_t *msg)
 			return(0);
 		}
 	}
-	if ((proc->ces & 0xfffffff0) == 0xff00) {
+	if ((proc->ces & 0xffffff00) == 0xff00) {
 		dprint(DBGM_L3, "%s: master state %d found\n", __FUNCTION__,
 			proc->state);
 		msg_push(msg, mISDNUSER_HEAD_SIZE);
