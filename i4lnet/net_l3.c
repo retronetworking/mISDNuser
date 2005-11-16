@@ -9,7 +9,6 @@
  */
 
 #include <stdlib.h>
-#include <asm/bitops.h>
 #include "mISDNlib.h"
 #include "net_l2.h"
 #include "net_l3.h"

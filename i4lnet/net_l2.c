@@ -32,18 +32,6 @@ enum {
 
 #define L2_STATE_COUNT (ST_L2_8+1)
 
-static char *strL2State[] =
-{
-	"ST_L2_1",
-	"ST_L2_2",
-	"ST_L2_3",
-	"ST_L2_4",
-	"ST_L2_5",
-	"ST_L2_6",
-	"ST_L2_7",
-	"ST_L2_8",
-};
-
 enum {
 	EV_L2_UI,
 	EV_L2_SABME,
