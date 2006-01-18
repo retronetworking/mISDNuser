@@ -2375,7 +2375,7 @@ send_proc(layer3_proc_t *proc, int op, void *arg)
 				proc->next->prev = proc->prev;
 			if (proc->prev)
 				proc->prev->next = proc->next;
-			if (proc->l3 && proc == proc->l3->proc)
+			if (proc->l3 && (proc == proc->l3->proc) )
 				proc->l3->proc = proc->next;
 			if (proc->master) {
 				if (proc->master->child == proc)
