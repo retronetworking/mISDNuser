@@ -893,8 +893,10 @@ l3dss1_release(layer3_proc_t *pc, int pr, void *arg)
 		l3dss1_message(pc, MT_RELEASE_COMPLETE);
 	if (mISDN_l3up(pc, umsg))
 		free_msg(umsg);
-	newl3state(pc, 0);
+
+/*	newl3state(pc, 0);
 	send_proc(pc, IMSG_END_PROC_M, NULL);
+*/
 }
 
 static void
