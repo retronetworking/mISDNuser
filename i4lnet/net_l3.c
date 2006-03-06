@@ -9,7 +9,6 @@
  */
 
 #include <stdlib.h>
-#include <asm/bitops.h>
 #include "mISDNlib.h"
 #include "net_l2.h"
 #include "net_l3.h"
@@ -894,8 +893,10 @@ l3dss1_release(layer3_proc_t *pc, int pr, void *arg)
 		l3dss1_message(pc, MT_RELEASE_COMPLETE);
 	if (mISDN_l3up(pc, umsg))
 		free_msg(umsg);
-	newl3state(pc, 0);
+
+/*	newl3state(pc, 0);
 	send_proc(pc, IMSG_END_PROC_M, NULL);
+*/
 }
 
 static void
@@ -2376,7 +2377,7 @@ send_proc(layer3_proc_t *proc, int op, void *arg)
 				proc->next->prev = proc->prev;
 			if (proc->prev)
 				proc->prev->next = proc->next;
-			if (proc == proc->l3->proc)
+			if (proc->l3 && (proc == proc->l3->proc) )
 				proc->l3->proc = proc->next;
 			if (proc->master) {
 				if (proc->master->child == proc)
