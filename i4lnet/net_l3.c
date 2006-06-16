@@ -773,13 +773,22 @@ l3dss1_disconnect(layer3_proc_t *pc, int pr, void *arg)
 	msg_t		*umsg,*msg = arg;
 	DISCONNECT_t	*disc;
 
+	if (pc->state == 19) {
+	//	printf("We're in State 19, receive disconnect, so we stay here\n");
+		return ;
+	}
+
+
 	umsg = prep_l3data_msg(CC_DISCONNECT | INDICATION, pc->ces |
 		(pc->callref << 16), sizeof(DISCONNECT_t), msg->len, NULL);
 	if (!umsg)
 		return;
 	disc = (DISCONNECT_t *)(umsg->data + mISDNUSER_HEAD_SIZE);
+
+
 	StopAllL3Timer(pc);
 	newl3state(pc, 11);
+
 	if (!(disc->CAUSE = l3dss1_get_cause(pc, msg, umsg))) {
 		if (pc->l3->debug & L3_DEB_WARN)
 			l3_debug(pc->l3, "DISC get_cause ret(%d)", pc->err);
@@ -1266,7 +1275,7 @@ static struct stateentry datastatelist[] =
 		MT_ALERTING, l3dss1_alerting_i},
 	{SBIT(6) | SBIT(7)  | SBIT(9) | SBIT(25),
 		MT_CONNECT, l3dss1_connect_i},
-	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(10),
+	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(10) | SBIT(19),
 		MT_DISCONNECT, l3dss1_disconnect},
 	{SBIT(7) | SBIT(8) | SBIT(9),
 		MT_DISCONNECT, l3dss1_disconnect_i},
@@ -2252,9 +2261,9 @@ static struct stateentry downstatelist[] =
 	 CC_CONNECT | RESPONSE, l3dss1_connect_res},
 	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(10),
 	 CC_DISCONNECT | REQUEST, l3dss1_disconnect_req},
-	{SBIT(6) | SBIT(7) | SBIT(8) | SBIT(9) | SBIT(25),
+	{ SBIT(2) | SBIT(6) | SBIT(7) | SBIT(8) | SBIT(9) | SBIT(25),
 	 CC_DISCONNECT | REQUEST, l3dss1_disconnect_req_out},
-	{SBIT(11)
+	{ SBIT(2) | SBIT(11)
 #warning bitte beachte folgendes:
 /*
 es ist nur erlaubt, im state 11 einen release zu schicken!
