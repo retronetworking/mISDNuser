@@ -1873,7 +1873,7 @@ l2from_up(net_stack_t *nst, msg_t *msg) {
 		hh->prim, hh->dinfo);
 	l2 = select_l2(nst, SAPITEI(hh->dinfo));
 	if (!l2) {
-		dprint(DBGM_L2, l2->nst->cardnr, "%s: no l2 for sapi(%d) tei(%d)\n", __FUNCTION__,
+		dprint(DBGM_L2, nst->cardnr, "%s: no l2 for sapi(%d) tei(%d)\n", __FUNCTION__,
 			SAPITEI(hh->dinfo));
 		return(-ENXIO);
 	}
