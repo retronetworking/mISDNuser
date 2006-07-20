@@ -131,7 +131,7 @@ getcallref(u_char *p)
 void
 newl3state(layer3_proc_t *pc, int state)
 {
-	if (pc->l3->debug & L3_DEB_STATE)
+	if (pc->l3 && pc->l3->debug & L3_DEB_STATE)
 		l3_debug(pc->l3, "newstate cr %d %d%s --> %d%s", 
 			 pc->callref & 0x7FFF,
 			 pc->state, pc->master ? "i" : "",
