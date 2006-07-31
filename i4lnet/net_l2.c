@@ -662,10 +662,8 @@ l2_establish(struct FsmInst *fi, int event, void *arg)
 	msg_t *msg = arg;
 	layer2_t *l2 = fi->userdata;
 
-	if (!test_bit(FLG_LAPD_NET, &l2->flag)) {
-		establishlink(fi);
-		test_and_set_bit(FLG_L3_INIT, &l2->flag);
-	}
+	establishlink(fi);
+	test_and_set_bit(FLG_L3_INIT, &l2->flag);
 	free_msg(msg);
 }
 
