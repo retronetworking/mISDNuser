@@ -136,6 +136,8 @@ l2mgr(layer2_t *l2, u_int prim, void *arg) {
 	long c = (long)arg;
 
 	dprint(DBGM_L2, l2->nst->cardnr, "l2mgr: prim %x %c\n", prim, (char)c);
+      l2->nst->phd_down_msg=NULL;
+      msg_queue_purge(&l2->nst->down_queue);
 	return(0);
 }
 
