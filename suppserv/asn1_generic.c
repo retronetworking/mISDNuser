@@ -60,7 +60,6 @@ ParseEnum(struct asn1_parm *pc, u_char *p, u_char *end, int *i)
 	return p - beg;
 }
 
-#if 0
 int
 ParseIA5String(struct asn1_parm *pc, u_char *p, u_char *end, char *str)
 {
@@ -77,7 +76,6 @@ ParseIA5String(struct asn1_parm *pc, u_char *p, u_char *end, char *str)
 	*str = 0;
 	return p - beg;
 }
-#endif
 
 int
 ParseNumericString(struct asn1_parm *pc, u_char *p, u_char *end, char *str)
