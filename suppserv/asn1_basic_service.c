@@ -2,7 +2,7 @@
  *
  */
 
-#include "suppserv.h"
+#include "asn1.h"
 
 // ======================================================================
 // Basic Service Elements EN 300 196-1 D.6

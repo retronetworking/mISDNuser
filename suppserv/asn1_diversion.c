@@ -2,8 +2,8 @@
  *
  */
 
+#include "asn1.h"
 #include <stdio.h>
-#include "suppserv.h"
 
 // ======================================================================
 // Diversion Supplementary Services ETS 300 207-1 Table 3

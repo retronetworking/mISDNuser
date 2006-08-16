@@ -2,9 +2,9 @@
  *
  */
 
+#include "asn1.h"
 #include <stdio.h>
 #include <string.h>
-#include "suppserv.h"
 
 void buildnumber(char *num, int oc3, int oc3a, char *result, int version,
 		 int *provider, int *sondernummer, int *intern, int *local,

@@ -2,8 +2,8 @@
  *
  */
 
+#include "asn1.h"
 #include <stdio.h>
-#include "suppserv.h"
 
 // ======================================================================
 // Component EN 300 196-1 D.1

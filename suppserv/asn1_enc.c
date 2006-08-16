@@ -2,7 +2,7 @@
  *
  */
 
-#include "suppserv.h"
+#include "asn1.h"
 #include <string.h>
 
 int encodeNull(__u8 *dest)
