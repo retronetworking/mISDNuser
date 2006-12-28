@@ -1056,6 +1056,8 @@ l3dss1_alerting_i(layer3_proc_t *pc, int pr, void *arg)
 		find_and_copy_ie(msg->data, msg->len, IE_HLC, 0, umsg);
 	al->USER_USER =
 		find_and_copy_ie(msg->data, msg->len, IE_USER_USER, 0, umsg);
+	al->REDIR_DN =
+		find_and_copy_ie(msg->data, msg->len, IE_REDIR_DN, 0, umsg);
 	if (!mISDN_l3up(pc->master, umsg))
 		return;
 	free_msg(umsg);
@@ -1105,6 +1107,8 @@ l3dss1_call_proc(layer3_proc_t *pc, int pr, void *arg)
 		find_and_copy_ie(msg->data, msg->len, IE_PROGRESS, 0, umsg);
 	cp->DISPLAY =
 		find_and_copy_ie(msg->data, msg->len, IE_DISPLAY, 0, umsg);
+	cp->REDIR_DN =
+		find_and_copy_ie(msg->data, msg->len, IE_REDIR_DN, 0, umsg);
 	cp->HLC =
 		find_and_copy_ie(msg->data, msg->len, IE_HLC, 0, umsg);
 	L3DelTimer(&pc->timer1);
@@ -1508,6 +1512,8 @@ l3dss1_proceed_req(layer3_proc_t *pc, int pr, void *arg)
 			AddvarIE(pc, IE_PROGRESS, cproc->PROGRESS);
 		if (cproc->DISPLAY)
 			AddvarIE(pc, IE_DISPLAY, cproc->DISPLAY);
+		if (cproc->REDIR_DN)
+			AddvarIE(pc, IE_REDIR_DN, cproc->REDIR_DN);
 		if (cproc->HLC)
 			AddvarIE(pc, IE_HLC, cproc->HLC);
 		SendMsg(pc, 3);
@@ -1541,6 +1547,8 @@ l3dss1_alert_req(layer3_proc_t *pc, int pr, void *arg)
 			AddvarIE(pc, IE_HLC, alert->HLC);
 		if (alert->USER_USER)
 			AddvarIE(pc, IE_USER_USER, alert->USER_USER);
+		if (alert->REDIR_DN)
+			AddvarIE(pc, IE_REDIR_DN, alert->REDIR_DN);
 		SendMsg(pc, 4);
 	} else {
 		newl3state(pc, 4);
