@@ -150,7 +150,7 @@ static void ph_control(int sock, int c1, int c2)
 	unsigned char data[MISDN_HEADER_LEN+sizeof(int)+sizeof(int)];
 	struct mISDNhead *hh = (struct mISDNhead *)data;
 	int len;
-	unsigned long *d = (unsigned long *)(data + MISDN_HEADER_LEN);
+	int *d = (int *)(data + MISDN_HEADER_LEN);
 
 	hh->prim = PH_CONTROL_REQ;
 	hh->id = 0;
@@ -167,7 +167,7 @@ void ph_control_block(int sock, int c1, void *c2, int c2_len)
 	unsigned char data[MISDN_HEADER_LEN+sizeof(int)+c2_len];
 	struct mISDNhead *hh = (struct mISDNhead *)data;
 	int len;
-	unsigned long *d = (unsigned long *)(data + MISDN_HEADER_LEN);
+	int *d = (int *)(data + MISDN_HEADER_LEN);
 
 	hh->prim = PH_CONTROL_REQ;
 	hh->id = 0;
