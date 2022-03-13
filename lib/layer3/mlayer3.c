@@ -57,7 +57,7 @@ cleanup_layer3(void)
 	__init_done = 0;
 }
 
-/* for now, maybe get this via some register prortocol in future */
+/* for now, maybe get this via some register protocol in future */
 extern struct l3protocol	dss1user;
 extern struct l3protocol	dss1net;
 /*
