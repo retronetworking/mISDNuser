@@ -1,5 +1,9 @@
 #include "alaw.h"
 
+signed char lin2alaw[65536];   // 16bit unsigned index
+signed char *slin2alaw;                // 16bit signed index
+uint16_t alaw2lin[256];                // alaw -> 16bit PCM, Mono, 8000 hz
+
 // alaw -> signed 16-bit 
 static short alaw_to_lin[] = {
 	0x13fc, 0xec04, 0x0144, 0xfebc, 0x517c, 0xae84, 0x051c, 0xfae4,
