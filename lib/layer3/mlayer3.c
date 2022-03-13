@@ -137,7 +137,7 @@ open_layer3(unsigned int dev, unsigned int proto, unsigned int prop, mlayer3_cb_
 	case L3_PROTOCOL_DSS1_USER:
 		if (!(l3->ml3.devinfo->Dprotocols & (1 << ISDN_P_TE_S0))
 		 && !(l3->ml3.devinfo->Dprotocols & (1 << ISDN_P_TE_E1))) {
-			eprint("protocol L3_PROTOCOL_DSS1_USER device do not support ISDN_P_TE_S0 / ISDN_P_TE_E1\n");
+			eprint("protocol L3_PROTOCOL_DSS1_USER device doesn't support ISDN_P_TE_S0 / ISDN_P_TE_E1\n");
 			goto fail;
 		}
 		fd = socket(PF_ISDN, SOCK_DGRAM, ISDN_P_LAPD_TE);
@@ -150,7 +150,7 @@ open_layer3(unsigned int dev, unsigned int proto, unsigned int prop, mlayer3_cb_
 	case L3_PROTOCOL_DSS1_NET:
 		if (!(l3->ml3.devinfo->Dprotocols & (1 << ISDN_P_NT_S0))
 		 && !(l3->ml3.devinfo->Dprotocols & (1 << ISDN_P_NT_E1))) {
-			eprint("protocol L3_PROTOCOL_DSS1_NET device do not support ISDN_P_NT_S0 / ISDN_P_NT_E1\n");
+			eprint("protocol L3_PROTOCOL_DSS1_NET device doesn't support ISDN_P_NT_S0 / ISDN_P_NT_E1\n");
 			goto fail;
 		}
 		fd = socket(PF_ISDN, SOCK_DGRAM, ISDN_P_LAPD_NT);
