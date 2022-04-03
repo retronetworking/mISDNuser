@@ -506,10 +506,10 @@ int SFF_WriteTiff(struct sff_state *sff, char *name)
 	TIFF *tf;
 	int compression_out = COMPRESSION_CCITTFAX3;
 	int fillorder_out = FILLORDER_MSB2LSB;
-	uint32 group3options_out = GROUP3OPT_FILLBITS|GROUP3OPT_2DENCODING;
-	uint32 group4options_out = 0;	/* compressed */
-	uint32 defrowsperstrip = (uint32) 0;
-	uint32 rowsperstrip;
+	uint32_t group3options_out = GROUP3OPT_FILLBITS|GROUP3OPT_2DENCODING;
+	uint32_t group4options_out = 0;	/* compressed */
+	uint32_t defrowsperstrip = (uint32_t) 0;
+	uint32_t rowsperstrip;
 	int photometric_out = PHOTOMETRIC_MINISWHITE;
 	float resY;
 
@@ -549,14 +549,14 @@ int SFF_WriteTiff(struct sff_state *sff, char *name)
 			case COMPRESSION_CCITTFAX3:
 				TIFFSetField(tf, TIFFTAG_GROUP3OPTIONS, group3options_out);
 				TIFFSetField(tf, TIFFTAG_FAXMODE, FAXMODE_CLASSIC);
-				rowsperstrip = (defrowsperstrip) ? defrowsperstrip : (uint32)-1;
+				rowsperstrip = (defrowsperstrip) ? defrowsperstrip : (uint32_t)-1;
 				break;
 
 			/* g4 */
 			case COMPRESSION_CCITTFAX4:
 				TIFFSetField(tf, TIFFTAG_GROUP4OPTIONS, group4options_out);
 				TIFFSetField(tf, TIFFTAG_FAXMODE, FAXMODE_CLASSIC);
-				rowsperstrip = (defrowsperstrip) ? defrowsperstrip : (uint32)-1;
+				rowsperstrip = (defrowsperstrip) ? defrowsperstrip : (uint32_t)-1;
 				break;
 
 			default:
